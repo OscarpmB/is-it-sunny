@@ -1,0 +1,50 @@
+input[type=text] {
+    width: 25rem;
+    padding: 10px 20px;
+    margin: 0.5rem;
+    box-sizing: border-box;
+    border: none;
+    border-bottom:  2px solid rgb(153, 143, 49);
+    background-color: #f1f1f1;
+
+}
+.main, body{
+    background-color: #e4e3e3;
+}
+.screen{
+    align-items: center;
+}
+.rubrik{
+    text-align: center;
+}
+.exempel_text {
+    text-align: center;
+}
+.inputs {
+    display: grid;
+    justify-content: center;
+    
+    
+}
+.output_btn{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    
+}
+.temp {
+    text-align: center;
+}
+input[type=button]{
+    width: 8rem;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    /* border: none; */
+    border:  2px solid rgb(153, 143, 49);
+    background-color: #f1f1f1;
+    border-radius: 1rem;
+    text-align: center;
+}
+.get_value {
+    align-content: center;
+}

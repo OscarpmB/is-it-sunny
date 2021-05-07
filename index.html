@@ -4,34 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Idé</title>
-    <link rel="stylesheet" href="index.css">
-    <script src="index.js"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="/testSMHIapi/style.css">
+    <!--ALL links to scrpits must be placed in the body segment!
+        otherwise the file is not read properly -->
 </head>
 <body>
-    <div class="block">
-        <section class="main">
-            <div class="UpperContainer">
-                <h1 class="title">Annie och Oscars grymma ide.</h1>
-                <div class="WeatherButtonBox">
-                    <ul class="inputBar">
-                        <li  class="item">
-                            <input type="text" id="input1">
-                        </li>
-                        <li class="item">
-                            <input type="text" id='input2' >
-                        </li>
-                        
-                    </ul>
-                    <button onclick="getWeather()">Get Weather!</button>
-                    <p id='weather'></p>
-                </div>
-            </div>
-            <div class="answerContaioner">
-                <div></div>
-                <p id='ans'></p>
-            </div>
-        </section>
+    <div class="screen"></div>
+        <h1 class="rubrik">Väder</h1>
+        <p class="exempel_text">För att få tempratur vid en specifik plats i Sverige, ange koordinaterna. <br>
+        Till exempel tempratur KTH entre: Longitud - 18.072033 Latitude - 59.346881</p>
+        <div class="inputs">
+            <input type="text" id="adress" placeholder="Enter an adress">
+            <input type="text" id="long" placeholder="Longitud">
+            <input type="text" id="lat" placeholder="Latitude">
+        </div>
+        <div class="output_btn"></div>
+            <p class="temp" id='temp' >-</p>
+            <input type="button" id="btn_coord" value="Get coordinates">
+            <input type="button" class ='get_value' id="btn_temp" value="Get temprature">
+            <script src="/testSMHIapi/test.js"></script>
+            <script src="/testSMHIapi/adressToCoord.js"></script>
+        </div>
     </div>
 </body>
 </html>
