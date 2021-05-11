@@ -132,5 +132,5 @@ function updateWeather(data){
 
 function handelError(err){
     console.log(err)
-    alert('Something went wrong, make sure to type accurate!')
+    alert('Something went wrong, make sure to type accurate!'+ err)
 }
