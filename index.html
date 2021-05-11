@@ -2,30 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/style.css">
-    <!--ALL links to scrpits must be placed in the body segment!
-        otherwise the file is not read properly -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather app</title>
+    <link rel="stylesheet" href="annie.css">
 </head>
 <body>
-    <div class="screen"></div>
-        <h1 class="rubrik">Väder</h1>
-        <p class="exempel_text">För att få tempratur vid en specifik plats i Sverige, ange koordinaterna. <br>
-        Till exempel tempratur KTH entre: Longitud - 18.072033 Latitude - 59.346881</p>
-        <div class="inputs">
-            <input type="text" id="adress" placeholder="Enter an adress">
-            <input type="text" id="long" placeholder="Longitud">
-            <input type="text" id="lat" placeholder="Latitude">
-        </div>
-        <div class="output_btn"></div>
-            <p class="temp" id='temp' >-</p>
-            <input type="button" id="btn_coord" value="Get coordinates">
-            <input type="button" class ='get_value' id="btn_temp" value="Get temprature">
-            <script src="/adressToCoord.js"></script>
-            <script src="/test.js"></script>
-        </div>
+    <div class ="app-wrap">
+        <header>
+            <input type="text" id="search-box" autocomplete="off" class="search-box" placeholder="Search for a city..."/>
+            <input type="button" id="button"/>
+        </header>
+        <main>
+            <section class="location">
+                <div class="city" id="label">Södermalm, Stockholm</div>
+                <div class ="date">Tuesday 4 May 2021</div>
+            </section>
+            <div class="current">
+                <div class="temp" id="temp">15<span>°c</span></div>
+                <div class="weather" id="weather">Sunny</div>
+                <div class="hi-low">13°c/16°c</div>
+            </div>
+        </main>
     </div>
+    <script src="annie.js"></script>
+    <script src="/getAdressCoordinates.js"></script>
 </body>
 </html>
