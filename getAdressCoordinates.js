@@ -43,7 +43,7 @@ function startAPI(){
             urlSMHI = 'https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/'+coords[1]+'/lat/'+coords[0]+'/data.json';
             // start collecting data from smhi.
             getWeatherSMHI();
-            let bol = isItSunny(coords, weatherStatus);
+            //let bol = isItSunny(coords, weatherStatus);
             console.log(bol)
         })
         .catch(err => handelError(err))
@@ -65,17 +65,17 @@ function getWeatherSMHI(){
 }
 
 
-function isItSunny(coords, weatherStatus){
-    let a = parseFloat(coords[0])
-            let b = parseFloat(coords[1])
-    var times = SunCalc.getPosition(new Date(), a, b)
-console.log(times)
-    if (times > 0 && weatherStatus == 1 || 2 || 3 || 4){
-        return true;
-    } else {
-        return false;
-    }
-}
+// function isItSunny(coords, weatherStatus){
+//     let a = parseFloat(coords[0])
+//             let b = parseFloat(coords[1])
+//     var times = SunCalc.getPosition(new Date(), a, b)
+// console.log(times)
+//     if (times > 0 && weatherStatus == 1 || 2 || 3 || 4){
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
 
 //Här printar du!!
 function updateWeather(data){
