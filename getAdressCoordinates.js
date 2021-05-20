@@ -14,12 +14,12 @@ const weatherStatus = {
 }
 
 
-window.onload=function(){
-    $(function(){
-        if(window.location.protocol==="https:")
-            window.location.protocol="http";
-    });
-}
+// window.onload=function(){
+//     $(function(){
+//         if(window.location.protocol==="https:")
+//             window.location.protocol="http";
+//     });
+// }
 
 
 //Add an event listener to button
@@ -35,6 +35,7 @@ function startAPI(){
 
     fetch(urlToPositionstack).then(resp => resp.json())
         .then(data => {
+            console.log(data)
             coords[0] = (data.data[0].latitude);
             coords[1] = (data.data[0].longitude);
             //name stored at index 3
