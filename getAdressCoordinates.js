@@ -44,7 +44,7 @@ function startAPI(){
             // start collecting data from smhi.
             getWeatherSMHI();
             //let bol = isItSunny(coords, weatherStatus);
-            console.log(bol)
+            //console.log(bol)
         })
         .catch(err => handelError(err))
     // if(coords.length>0){
