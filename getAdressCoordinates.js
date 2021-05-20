@@ -4,6 +4,7 @@ let urlLocationIQ = 'https://eu1.locationiq.com/v1/search.php?key='+keyLocationI
 
 
 let btn = document.getElementById('button');
+let searchBox = document.getElementById('search-box');
 let coords = [];
 const weatherStatus = {
     1:"Clear Sky",
@@ -42,6 +43,17 @@ btn.addEventListener('click', function(){
         startAPI();
         }else{
             return;
+        }
+    });
+    // Add eventlisterner for enter press
+searchBox.addEventListener('keyup', function(){ 
+    event.preventDefault();
+    if(event.keyCode == 13){
+        if(document.getElementById('search-box').value != ""){
+            startAPI();
+            }else{
+                return;
+            }
         }
     });
 
@@ -138,11 +150,3 @@ function handelError(err){
     console.log(err)
     alert('Something went wrong, make sure to type accurate!')
 }
-
-
-
-
-
-
-
-
