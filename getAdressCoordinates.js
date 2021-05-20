@@ -2,7 +2,7 @@ let urlSMHI = 'https://opendata-download-metfcst.smhi.se/api/category/pmp3g/vers
 const keyLocationIQ = 'pk.12db4134342bdbfb7cd40926b200b663';
 let urlLocationIQ = 'https://eu1.locationiq.com/v1/search.php?key='+keyLocationIQ+'&q=';
 
-
+//Test kommentar
 let btn = document.getElementById('button');
 let coords = [];
 const weatherStatus = {
