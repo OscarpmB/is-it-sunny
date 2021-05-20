@@ -14,6 +14,14 @@ const weatherStatus = {
 }
 
 
+window.onload=function(){
+    $(function(){
+        if(window.location.protocol==="https:")
+            window.location.protocol="http";
+    });
+}
+
+
 //Add an event listener to button
 btn.addEventListener('click', function(){ startAPI();});
 
