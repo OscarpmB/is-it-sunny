@@ -128,12 +128,6 @@ function getWeatherSMHI(){
         })
 }
 
-//function getWeatherSymbol(data){ //testat att göra en egen funktion för att få fram weathersymbol
-   // weatherSymbol =parseInt(data.timeSeries[0].parameters[18].values[0]);
-    //return weatherSymbol
-//}
-
-
 function isItSunny(coords, weatherSymbol){
     let a = parseFloat(coords[0])
     let b = parseFloat(coords[1])
@@ -158,10 +152,9 @@ function isItSunny(coords, weatherSymbol){
 //Här printar du!!
 function updateWeather(data, weatherSymbol){
     document.getElementById('label'). innerHTML = coords[2]
-    document.getElementById('temp').innerHTML = data.timeSeries[0].parameters[10].values[0];
+    document.getElementById('temp').innerHTML = data.timeSeries[0].parameters[10].values[0]+"°C";
     weatherSymbol =parseInt(data.timeSeries[0].parameters[18].values[0]);
     console.log(weatherSymbol)
-    document.getElementById('weather').innerHTML = weatherStatus[weatherSymbol];
     console.log(isItSunny(coords, weatherSymbol))
     if (isItSunny(coords, weatherSymbol) == 1){
         document.getElementById('sunny').innerHTML = "100% sol, kör i vind";
