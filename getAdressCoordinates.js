@@ -38,13 +38,13 @@ const weatherStatus = {
 }
 
 //Add an event listener to button
-btn.addEventListener('click', function(){ 
+/**btn.addEventListener('click', function(){ 
     if(document.getElementById('search-box').value != ""){
         startAPI();
         }else{
             return;
         }
-    });
+    });**/
     // Add eventlisterner for enter press
 searchBox.addEventListener('keyup', function(){ 
     event.preventDefault();
@@ -104,8 +104,8 @@ function startAPI(){
             urlSMHI = 'https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/'+coords[1]+'/lat/'+coords[0]+'/data.json';
             // start collecting data from smhi.
             getWeatherSMHI();
-            let bol = isItSunny(coords, weatherStatus);
-            console.log(bol)
+            //let bol = isItSunny(coords, weatherSymbol);
+            //console.log(bol)
         })
         .catch(err => handelError(err))
     // if(coords.length>0){
@@ -121,29 +121,61 @@ function getWeatherSMHI(){
     fetch(urlSMHI).then(resp => resp.json())
         .then(data => {
             console.log(data)
+            //getWeatherSymbol(data) //kallar på funktionen för att kunna kasta in weatherSymbol i updateWeather och därför printa den
             updateWeather(data)
+           
+
         })
 }
 
-function isItSunny(coords, weatherStatus){
+//function getWeatherSymbol(data){ //testat att göra en egen funktion för att få fram weathersymbol
+   // weatherSymbol =parseInt(data.timeSeries[0].parameters[18].values[0]);
+    //return weatherSymbol
+//}
+
+
+function isItSunny(coords, weatherSymbol){
     let a = parseFloat(coords[0])
     let b = parseFloat(coords[1])
     var times = SunCalc.getPosition(new Date(), a, b)
-console.log(times)
-    if (times > 0 && weatherStatus == 1 || 2){
-        return true;
-    } else {
-        return false;
-    }
+    console.log(weatherSymbol)
+    console.log(times.altitude, times.azimuth)
+    console.log(weatherSymbol)
+    //Har skrivit om if statement
+    if (times.altitude < 0){ //isåfall har solen gått ner
+        return 0;
+    } if (times.altitude > 0 && weatherSymbol ==  1){ //solen är uppe och det är soligt enligt SMHI OBS, verkar konstant ge true?????
+        return 1;
+    } if (times.altitude > 0 && weatherSymbol ==  2){
+        return 2;
+    }  if (times.altitude > 0 && weatherSymbol ==  3){
+        return 3;
+    } if (times.altitude > 0 && weatherSymbol ==  4){
+        return 4;
+    } else return false
 }
 
 //Här printar du!!
-function updateWeather(data){
+function updateWeather(data, weatherSymbol){
     document.getElementById('label'). innerHTML = coords[2]
     document.getElementById('temp').innerHTML = data.timeSeries[0].parameters[10].values[0];
     weatherSymbol =parseInt(data.timeSeries[0].parameters[18].values[0]);
+    console.log(weatherSymbol)
     document.getElementById('weather').innerHTML = weatherStatus[weatherSymbol];
-    //if(isItSunny() == true)
+    console.log(isItSunny(coords, weatherSymbol))
+    if (isItSunny(coords, weatherSymbol) == 1){
+        document.getElementById('sunny').innerHTML = "100% sol, kör i vind";
+    } if (isItSunny(coords, weatherSymbol) == 2){
+        document.getElementById('sunny').innerHTML = "Jo men det är soligt";
+    } if (isItSunny(coords, weatherSymbol) == 3){
+        document.getElementById('sunny').innerHTML = "Lite sol, lite moln";
+    } if (isItSunny(coords, weatherSymbol) == 4){
+        document.getElementById('sunny').innerHTML = "Rätt mycket moln men solchans finns";
+    } if (isItSunny(coords, weatherSymbol) == 0){
+        document.getElementById('sunny').innerHTML = "...solen har gått ner";
+    } if (isItSunny(coords, weatherSymbol) == false){
+   document.getElementById('sunny').innerHTML = "Nej, här finns tyvärr ingen sol";
+    }
 }
 
 function handelError(err){
