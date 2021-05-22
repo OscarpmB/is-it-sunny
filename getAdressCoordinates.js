@@ -152,7 +152,13 @@ function isItSunny(coords, weatherSymbol){
 //Här printar du!!
 function updateWeather(data, weatherSymbol){
     document.getElementById('label'). innerHTML = coords[2]
-    document.getElementById('temp').innerHTML = data.timeSeries[0].parameters[10].values[0]+"°C";
+    console.log("så här lång är listan: ", data.timeSeries[0].parameters.length)
+    console.log("Det här är typen: ",data.timeSeries[0].parameters)
+    for(i = 0; i < data.timeSeries[0].parameters.length;i++){
+        if (data.timeSeries[0].parameters[i].name == "t"){
+            document.getElementById('temp').innerHTML = data.timeSeries[0].parameters[i].values[0]+"°C";
+        }
+    } 
     weatherSymbol =parseInt(data.timeSeries[0].parameters[18].values[0]);
     console.log(weatherSymbol)
     console.log(isItSunny(coords, weatherSymbol))
